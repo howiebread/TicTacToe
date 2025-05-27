@@ -3,7 +3,7 @@
 class Program
 {
     // The game board - starts with numbers 1-9 for positions
-    char[,] board =
+   static char[,] board =
     {
         { '1', '2', '3' },
         { '4', '5', '6' },
@@ -19,4 +19,23 @@ class Program
         Console.WriteLine("You are X, Computer is O");
         Console.WriteLine("Enter numbers 1-9 to make your move\n");
     }
+    
+    // Method to display current state of the board.
+    static void DisplayBoard()
+    {
+        Console.Clear();
+        Console.WriteLine("Tic Tac Toe - You are X, Computer is O\n");
+        
+        for (int i = 0; i < 3; i++)
+        {
+            Console.WriteLine($" {board[i, 0]} | {board[i, 1]} | {board[i, 2]} ");
+            if (i < 2)
+                Console.WriteLine("---|---|---");
+        }
+        Console.WriteLine();
+    }
+    
+   
+    
+    
 }

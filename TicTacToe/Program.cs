@@ -35,7 +35,24 @@ class Program
         Console.WriteLine();
     }
     
-   
+    static void AIMove()
+    {
+        Console.WriteLine("Computer is thinking...");
+        System.Threading.Thread.Sleep(1000); // Pause for dramatic effect
+        
+        // Find first available spot
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (board[i, j] != 'X' && board[i, j] != 'O')
+                {
+                    board[i, j] = 'O';
+                    return;
+                }
+            }
+        }
+    }
     
     
 }

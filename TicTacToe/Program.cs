@@ -35,7 +35,7 @@ class Program
 
         Console.WriteLine();
     }
-
+    // Method to control AI moves.
     static void AIMove()
     {
         Console.WriteLine("Computer is thinking...");
@@ -54,7 +54,8 @@ class Program
             }
         }
     }
-
+    
+    //Method to control player moves.
     static void PlayerMove()
     {
         bool validMove = false;
@@ -97,4 +98,19 @@ class Program
             }
         }
     }
+    
+    // Method to check if board is full.
+    static bool IsBoardFull()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (board[i, j] != 'X' && board[i, j] != 'O')
+                    return false;
+            }
+        }
+        return true;
+    }
+    
 }

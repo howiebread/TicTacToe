@@ -28,12 +28,12 @@ public static class Program
             if (currentPlayer == 'X')
             {
                 // Human player's turn
-                UI.PlayerMove();
+                UI.MovePlayer();
             }
             else
             {
                 // AI player's turn
-                UI.AIMove();
+                UI.MoveAI();
             }
 
             // Check if someone won

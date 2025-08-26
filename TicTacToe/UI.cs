@@ -20,7 +20,7 @@ public static class UI
     }
 
     //Method to control player moves.
-    public static void PlayerMove()
+    public static void MovePlayer()
     {
         bool validMove = false;
 
@@ -64,7 +64,7 @@ public static class UI
     }
 
     // Method to control AI moves.
-    public static void AIMove()
+    public static void MoveAI()
     {
         Console.WriteLine("Computer is thinking...");
         System.Threading.Thread.Sleep(1000); // Pause for dramatic effect

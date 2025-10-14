@@ -2,13 +2,10 @@
 
 public static class Program
 {
-    // The game board - starts with numbers 1-9 for positions
-    public static char[,] board =
-    {
-        { '1', '2', '3' },
-        { '4', '5', '6' },
-        { '7', '8', '9' }
-    };
+    // Grid size - this can be changed depending on what the user selects.
+    public static int gridSize;
+    // The game board is now dynamically sized.
+    public static char[,] board;
 
     public static char currentPlayer = 'X'; // Player uses X
 
@@ -16,9 +13,24 @@ public static class Program
     static void Main(string[] args)
     {
         UI.OutputToUser("Welcome to Tic Tac Toe!");
-        UI.OutputToUser("You are X, Computer is O");
-        UI.OutputToUser("Enter numbers 1-9 to make your move\n");
-
+        UI.OutputToUser("Enter grid size (3 for classic, 4-10 recommended): ");
+        
+        if (int.TryParse(UI.TakeInput(), out int size) && size >= 3 && size <= 10)
+        {
+            gridSize = size;
+        }
+        else
+        {
+            Console.WriteLine("Invalid size. Using default size 3.");
+            gridSize = 3;
+        }
+        
+        //Initialize the board with the chosen size.
+        Logic.InitializeBoard();
+        
+        UI.OutputToUser("\nYou are X, Computer is O");
+        UI.OutputToUser($"Enter numbers 1-{gridSize * gridSize} to make your move\n");
+        
         //Main game loop.
         while (true)
         {

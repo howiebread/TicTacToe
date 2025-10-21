@@ -104,15 +104,15 @@ public static class Logic
        // Method to get grid size from user input.
        public static int GetGridSize()
        {
-           UI.OutputToUser("Enter grid size:");
+           UI.OutputToUser("Enter grid size: ");
            if (int.TryParse(UI.TakeInput(), out int size) && size >= Constants.MIN_SIZE && size <= Constants.MAX_SIZE)
            {
                return size;
            }
-           else
-           {
-               Console.WriteLine("Invalid size. Using default size 3.");
-               return Constants.DEFAULT_SIZE;
-           }
+
+           UI.OutputToUser("Invalid size. Using default size 3.");
+           return Constants.DEFAULT_SIZE;
+
+
        }
 }

@@ -12,10 +12,7 @@ public static class Program
 
     static void Main(string[] args)
     {
-       
-        UI.OutputToUser("Enter grid size (3 for classic, 4-10 recommended): ");
-        
-       // Ask user what size grid they want.
+        // Ask user what size grid they want.
        UI.OutputToUser("Welcome to Tic Tac Toe!");
        gridSize = Logic.GetGridSize();
         

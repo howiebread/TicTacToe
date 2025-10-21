@@ -6,24 +6,18 @@ public static class Program
     public static int gridSize;
     // The game board is now dynamically sized.
     public static char[,] board;
-
+    
     public static char currentPlayer = 'X'; // Player uses X
 
 
     static void Main(string[] args)
     {
-        UI.OutputToUser("Welcome to Tic Tac Toe!");
+       
         UI.OutputToUser("Enter grid size (3 for classic, 4-10 recommended): ");
         
-        if (int.TryParse(UI.TakeInput(), out int size) && size >= 3 && size <= 10)
-        {
-            gridSize = size;
-        }
-        else
-        {
-            Console.WriteLine("Invalid size. Using default size 3.");
-            gridSize = 3;
-        }
+       // Ask user what size grid they want.
+       UI.OutputToUser("Welcome to Tic Tac Toe!");
+       gridSize = Logic.GetGridSize();
         
         //Initialize the board with the chosen size.
         Logic.InitializeBoard();

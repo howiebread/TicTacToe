@@ -85,7 +85,7 @@ public static class UI
     public static void MoveAI()
     {
         Console.WriteLine("Computer is thinking...");
-        System.Threading.Thread.Sleep(1000); // Pause for dramatic effect
+        Thread.Sleep(1000); // Pause for dramatic effect
 
         // Find first available spot
         for (int i = 0; i < Program.gridSize; i++)

@@ -27,7 +27,7 @@ public static class Logic
     }
 
     // Method to check if player has won.
-       public static bool CheckWin()
+       public static bool CheckWin(char currentPlayer)
         {
             // Check rows
             for (int i = 0; i < Program.gridSize; i++)
@@ -35,7 +35,7 @@ public static class Logic
                 bool rowWin = true;
                 for (int j = 0; j < Program.gridSize; j++)
                 {
-                    if (Program.board[i, j] != Program.currentPlayer)
+                    if (Program.board[i, j] != currentPlayer)
                     {
                         rowWin = false;
                         break;
@@ -50,7 +50,7 @@ public static class Logic
                 bool colWin = true;
                 for (int i = 0; i < Program.gridSize; i++)
                 {
-                    if (Program.board[i, j] != Program.currentPlayer)
+                    if (Program.board[i, j] != currentPlayer)
                     {
                         colWin = false;
                         break;
@@ -63,7 +63,7 @@ public static class Logic
             bool topLeftBottomRight = true;
             for (int i = 0; i < Program.gridSize; i++)
             {
-                if (Program.board[i, i] != Program.currentPlayer)
+                if (Program.board[i, i] != currentPlayer)
                 {
                     topLeftBottomRight = false;
                     break;
@@ -75,7 +75,7 @@ public static class Logic
             bool topRightBottomLeft = true;
             for (int i = 0; i < Program.gridSize; i++)
             {
-                if (Program.board[i, Program.gridSize - 1 - i] != Program.currentPlayer)
+                if (Program.board[i, Program.gridSize - 1 - i] != currentPlayer)
                 {
                     topRightBottomLeft = false;
                     break;
@@ -111,6 +111,7 @@ public static class Logic
            }
 
            UI.OutputToUser("Invalid size. Using default size 3.");
+           
            return Constants.DEFAULT_SIZE;
 
 

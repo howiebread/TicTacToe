@@ -7,11 +7,13 @@ public static class Program
     // The game board is now dynamically sized.
     public static char[,] board;
     
-    public static char currentPlayer = 'X'; // Player uses X
+    
 
 
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
+         char currentPlayer = 'X'; // Player uses X
+         
         // Ask user what size grid they want.
        UI.OutputToUser("Welcome to Tic Tac Toe!");
        gridSize = Logic.GetGridSize();
@@ -40,7 +42,7 @@ public static class Program
             }
 
             // Check if someone won
-            if (Logic.CheckWin())
+            if (Logic.CheckWin(currentPlayer))
             {
                 UI.DisplayBoard();
                 if (currentPlayer == 'X')

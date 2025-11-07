@@ -4,29 +4,29 @@ public static class UI
 {
     
     // Method to display current state of the board.
-    public static void DisplayBoard()
+    public static void DisplayBoard(int gridSize, char[,] board)
     {
         Console.Clear();
-        Console.WriteLine($"Tic Tac Toe ({Program.gridSize}x{Program.gridSize}- You are X, Computer is O)\n");
+        Console.WriteLine($"Tic Tac Toe ({gridSize}x{gridSize}- You are X, Computer is O)\n");
         
-        for (int i = 0; i < Program.gridSize; i++)
+        for (int i = 0; i < gridSize; i++)
         {
             // Print the row
-            for (int j = 0; j < Program.gridSize; j++)
+            for (int j = 0; j < gridSize; j++)
             {
-                Console.Write($" {Program.board[i, j]} ");
-                if (j < Program.gridSize - 1)
+                Console.Write($" {board[i, j]} ");
+                if (j < gridSize - 1)
                     Console.Write("|");
             }
             Console.WriteLine();
             
             // Print separator line (except for last row)
-            if (i < Program.gridSize - 1)
+            if (i < gridSize - 1)
             {
-                for (int j = 0; j < Program.gridSize; j++)
+                for (int j = 0; j < gridSize; j++)
                 {
                     Console.Write("---");
-                    if (j < Program.gridSize - 1)
+                    if (j < gridSize - 1)
                         Console.Write("+");
                 }
                 Console.WriteLine();
@@ -37,10 +37,10 @@ public static class UI
     }
 
     //Method to control player moves.
-    public static void MovePlayer()
+    public static void MovePlayer(int gridSize, char[,] board)
     {
         bool validMove = false;
-        int maxPosition = Program.gridSize * Program.gridSize;
+        int maxPosition = gridSize * gridSize;
 
         while (!validMove)
         {
@@ -55,13 +55,13 @@ public static class UI
                 {
                     // Convert to array position 
                     int position = choice - 1;
-                    int row = position / Program.gridSize;
-                    int col = position % Program.gridSize;
+                    int row = position / gridSize;
+                    int col = position % gridSize;
 
                     // Check if spot is empty
-                    if (Program.board[row, col] != 'X' && Program.board[row, col] != 'O')
+                    if (board[row, col] != 'X' && board[row, col] != 'O')
                     {
-                        Program.board[row, col] = 'X';
+                        board[row, col] = 'X';
                         validMove = true; // Exit the loop
                     }
                     else
@@ -82,19 +82,19 @@ public static class UI
     }
 
     // Method to control AI moves.
-    public static void MoveAI()
+    public static void MoveAI(int gridSize, char[,] board)
     {
         Console.WriteLine("Computer is thinking...");
         Thread.Sleep(1000); // Pause for dramatic effect
 
         // Find first available spot
-        for (int i = 0; i < Program.gridSize; i++)
+        for (int i = 0; i < gridSize; i++)
         {
-            for (int j = 0; j < Program.gridSize; j++)
+            for (int j = 0; j < gridSize; j++)
             {
-                if (Program.board[i, j] != 'X' && Program.board[i, j] != 'O')
+                if (board[i, j] != 'X' && board[i, j] != 'O')
                 {
-                    Program.board[i, j] = 'O';
+                    board[i, j] = 'O';
                     return;
                 }
             }

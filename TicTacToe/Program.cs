@@ -2,24 +2,26 @@
 
 public static class Program
 {
-    // Grid size - this can be changed depending on what the user selects.
-    public static int gridSize;
-    // The game board is now dynamically sized.
-    public static char[,] board;
+    
+  
     
     
 
 
     public static void Main(string[] args)
     {
-         char currentPlayer = 'X'; // Player uses X
+    // Grid size - this can be changed depending on what the user selects.
+     int gridSize;
+    // The game board is now dynamically sized.
+     char[,] board;
+     char currentPlayer = 'X'; // Player uses X
          
         // Ask user what size grid they want.
        UI.OutputToUser("Welcome to Tic Tac Toe!");
        gridSize = Logic.GetGridSize();
         
         //Initialize the board with the chosen size.
-        Logic.InitializeBoard();
+        board = Logic.InitializeBoard(gridSize);
         
         UI.OutputToUser("\nYou are X, Computer is O");
         UI.OutputToUser($"Enter numbers 1-{gridSize * gridSize} to make your move\n");
@@ -28,23 +30,23 @@ public static class Program
         while (true)
         {
             // Show the current board
-            UI.DisplayBoard();
+            UI.DisplayBoard(gridSize, board);
 
             if (currentPlayer == 'X')
             {
                 // Human player's turn
-                UI.MovePlayer();
+                UI.MovePlayer(gridSize, board);
             }
             else
             {
                 // AI player's turn
-                UI.MoveAI();
+                UI.MoveAI(gridSize, board);
             }
 
             // Check if someone won
-            if (Logic.CheckWin(currentPlayer))
+            if (Logic.CheckWin(currentPlayer, board, gridSize))
             {
-                UI.DisplayBoard();
+                UI.DisplayBoard(gridSize, board);
                 if (currentPlayer == 'X')
                     UI.OutputToUser("You win! 🎉");
                 else
@@ -53,9 +55,9 @@ public static class Program
             }
 
             // Check if board is full (tie game)
-            if (Logic.IsBoardFull())
+            if (Logic.IsBoardFull(gridSize, board))
             {
-                UI.DisplayBoard();
+                UI.DisplayBoard(gridSize, board);
                 UI.OutputToUser("It's a tie! 🤝");
                 break;
             }

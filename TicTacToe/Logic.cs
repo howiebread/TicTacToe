@@ -6,29 +6,17 @@ public static class Logic
     public static char[,] InitializeBoard(int gridSize)
     {
         char[,] board = new char[gridSize, gridSize];
-        int number = 1;
+        
 
         for (int i = 0; i < gridSize; i++)
         {
             for (int j = 0; j < gridSize; j++)
             {
-                // For single digit numbers, use the number
-                // For larger numbers, use letters or symbols
-                if (number <= 9)
-                    board[i, j] = number.ToString()[0];
-                else if (number <= 35)
-                    board[i, j] = (char)('A' + number - 10); // A, B, C, etc.
-                else
-                    board[i, j] = '*'; // Fallback for very large grids
-
-                number++;
+                board[i, j] = ' ';
             }
-
-            
         } 
         return board;
     }  
-
     // Method to check if player has won.
        public static bool CheckWin(char currentPlayer, char[,] board, int gridSize)
         {

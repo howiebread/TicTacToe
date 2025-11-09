@@ -1,13 +1,7 @@
 ﻿namespace TicTacToe;
 
 public static class Program
-{
-    
-  
-    
-    
-
-
+{ 
     public static void Main(string[] args)
     {
     // Grid size - this can be changed depending on what the user selects.

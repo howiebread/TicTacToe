@@ -38,7 +38,7 @@ public static class Program
             }
 
             // Check if someone won
-            if (Logic.CheckWin(currentPlayer, board, gridSize))
+            if (Logic.CheckWinColumns(currentPlayer, board, gridSize) || Logic.CheckWinRows(currentPlayer, board, gridSize) || Logic.CheckWinDiagonalTopLeftToBottomRight(currentPlayer, board, gridSize) || Logic.CheckWinDiagonalTopRightToBottomLeft(currentPlayer, board, gridSize))
             {
                 UI.DisplayBoard(gridSize, board);
                 if (currentPlayer == Constants.X_Symbol)

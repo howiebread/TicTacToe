@@ -8,7 +8,7 @@ public static class Program
      int gridSize;
     // The game board is now dynamically sized.
      char[,] board;
-     char currentPlayer = 'X'; // Player uses X
+     char currentPlayer = Constants.X_Symbol; // Player uses X
          
         // Ask user what size grid they want.
        UI.OutputToUser("Welcome to Tic Tac Toe!");
@@ -26,7 +26,7 @@ public static class Program
             // Show the current board
             UI.DisplayBoard(gridSize, board);
 
-            if (currentPlayer == 'X')
+            if (currentPlayer == Constants.X_Symbol)
             {
                 // Human player's turn
                 UI.MovePlayer(gridSize, board);
@@ -41,7 +41,7 @@ public static class Program
             if (Logic.CheckWin(currentPlayer, board, gridSize))
             {
                 UI.DisplayBoard(gridSize, board);
-                if (currentPlayer == 'X')
+                if (currentPlayer == Constants.X_Symbol)
                     UI.OutputToUser("You win! 🎉");
                 else
                     UI.OutputToUser("Computer wins! 🤖");
@@ -57,7 +57,7 @@ public static class Program
             }
 
             // Switch to the other player
-            currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+            currentPlayer = (currentPlayer == Constants.X_Symbol) ? Constants.O_Symbol : Constants.X_Symbol;
         }
 
         UI.OutputToUser("Press any key to exit...");

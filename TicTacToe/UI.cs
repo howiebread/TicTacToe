@@ -15,18 +15,18 @@ public static class UI
             for (int j = 0; j < gridSize; j++)
             {
                 Console.Write($" {board[i, j]} ");
-                if (j < gridSize - 1)
+                if (j < gridSize - Constants.SUBTRACT_FROM_GRIDSIZE)
                     Console.Write("|");
             }
             Console.WriteLine();
             
             // Print separator line (except for last row)
-            if (i < gridSize - 1)
+            if (i < gridSize - Constants.SUBTRACT_FROM_GRIDSIZE)
             {
                 for (int j = 0; j < gridSize; j++)
                 {
                     Console.Write("---");
-                    if (j < gridSize - 1)
+                    if (j < gridSize - Constants.SUBTRACT_FROM_GRIDSIZE)
                         Console.Write("+");
                 }
                 Console.WriteLine();
@@ -51,17 +51,17 @@ public static class UI
             if (int.TryParse(input, out int choice))
             {
                 // Check if number is within valid range
-                if (choice >= 1 && choice <= maxPosition)
+                if (choice >= Constants.MINIMUN_VALID_RANGE && choice <= maxPosition)
                 {
                     // Convert to array position 
-                    int position = choice - 1;
+                    int position = choice - Constants.MINIMUN_VALID_RANGE;
                     int row = position / gridSize;
                     int col = position % gridSize;
 
                     // Check if spot is empty
-                    if (board[row, col] != 'X' && board[row, col] != 'O')
+                    if (board[row, col] != Constants.X_Symbol && board[row, col] != Constants.O_Symbol)
                     {
-                        board[row, col] = 'X';
+                        board[row, col] = Constants.X_Symbol;
                         validMove = true; // Exit the loop
                     }
                     else
@@ -92,9 +92,9 @@ public static class UI
         {
             for (int j = 0; j < gridSize; j++)
             {
-                if (board[i, j] != 'X' && board[i, j] != 'O')
+                if (board[i, j] != Constants.X_Symbol && board[i, j] != Constants.O_Symbol)
                 {
-                    board[i, j] = 'O';
+                    board[i, j] = Constants.O_Symbol;
                     return;
                 }
             }

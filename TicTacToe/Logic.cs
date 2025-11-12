@@ -82,7 +82,7 @@ public static class Logic
         bool topRightBottomLeft = true;
         for (int i = 0; i < gridSize; i++)
         {
-            if (board[i, gridSize - 1 - i] != currentPlayer)
+            if (board[i, gridSize - Constants.SUBTRACT_FROM_GRIDSIZE - i] != currentPlayer)
             {
                 topRightBottomLeft = false;
                 break;
@@ -100,7 +100,7 @@ public static class Logic
             {
                 for (int j = 0; j < gridSize; j++)
                 {
-                    if (board[i, j] != 'X' && board[i, j] != 'O')
+                    if (board[i, j] != Constants.X_Symbol && board[i, j] != Constants.O_Symbol)
                         return false;
                 }
             }

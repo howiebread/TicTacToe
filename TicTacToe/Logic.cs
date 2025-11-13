@@ -93,7 +93,7 @@ public static class Logic
         return false;
     }
 
-    public static void CheckWin(char currentPlayer, char[,] board, int gridSize)
+    public static bool CheckWin(char currentPlayer, char[,] board, int gridSize)
     {
         if (CheckWinColumns(currentPlayer, board, gridSize) || CheckWinRows(currentPlayer, board, gridSize) || CheckWinDiagonalTopLeftToBottomRight(currentPlayer, board, gridSize) || CheckWinDiagonalTopRightToBottomLeft(currentPlayer, board, gridSize))
         {
@@ -102,8 +102,11 @@ public static class Logic
                 UI.OutputToUser("You win! 🎉");
             else
                 UI.OutputToUser("Computer wins! 🤖");
-            
+            return true; // Return true when someone wins
+
         }
+
+        return false; // Return false when no on has won yet.
     }
     // Method to check if board is full.
        public static bool IsBoardFull(int gridSize, char[,] board)

@@ -35,7 +35,8 @@ public static class Program
             }
 
             // Check if someone won
-            Logic.CheckWin(currentPlayer, board, gridSize);
+            if (Logic.CheckWin(currentPlayer, board, gridSize))
+                break;
 
             // Check if board is full (tie game)
             if (Logic.IsBoardFull(gridSize, board))

@@ -59,9 +59,9 @@ public static class UI
                     int col = position % gridSize;
 
                     // Check if spot is empty
-                    if (board[row, col] != Constants.X_Symbol && board[row, col] != Constants.O_Symbol)
+                    if (board[row, col] != Constants.X_SYMBOL && board[row, col] != Constants.O_SYMBOL)
                     {
-                        board[row, col] = Constants.X_Symbol;
+                        board[row, col] = Constants.X_SYMBOL;
                         validMove = true; // Exit the loop
                     }
                     else
@@ -92,9 +92,9 @@ public static class UI
         {
             for (int j = 0; j < gridSize; j++)
             {
-                if (board[i, j] != Constants.X_Symbol && board[i, j] != Constants.O_Symbol)
+                if (board[i, j] != Constants.X_SYMBOL && board[i, j] != Constants.O_SYMBOL)
                 {
-                    board[i, j] = Constants.O_Symbol;
+                    board[i, j] = Constants.O_SYMBOL;
                     return;
                 }
             }

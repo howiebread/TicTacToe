@@ -8,25 +8,22 @@ public static class Program
      int gridSize;
     // The game board is now dynamically sized.
      char[,] board;
-     char currentPlayer = Constants.X_Symbol; // Player uses X
+     char currentPlayer = Constants.X_SYMBOL; // Player uses X
          
         // Ask user what size grid they want.
        UI.OutputToUser("Welcome to Tic Tac Toe!");
        gridSize = Logic.GetGridSize();
         
-        //Initialize the board with the chosen size.
-        board = Logic.InitializeBoard(gridSize);
-        
-        UI.OutputToUser("\nYou are X, Computer is O");
-        UI.OutputToUser($"Enter numbers 1-{gridSize * gridSize} to make your move\n");
-        
+       //Initialize the board with the chosen size.
+       board = Logic.InitializeBoard(gridSize);
+       
         //Main game loop.
         while (true)
         {
             // Show the current board
             UI.DisplayBoard(gridSize, board);
 
-            if (currentPlayer == Constants.X_Symbol)
+            if (currentPlayer == Constants.X_SYMBOL)
             {
                 // Human player's turn
                 UI.MovePlayer(gridSize, board);
@@ -38,15 +35,7 @@ public static class Program
             }
 
             // Check if someone won
-            if (Logic.CheckWinColumns(currentPlayer, board, gridSize) || Logic.CheckWinRows(currentPlayer, board, gridSize) || Logic.CheckWinDiagonalTopLeftToBottomRight(currentPlayer, board, gridSize) || Logic.CheckWinDiagonalTopRightToBottomLeft(currentPlayer, board, gridSize))
-            {
-                UI.DisplayBoard(gridSize, board);
-                if (currentPlayer == Constants.X_Symbol)
-                    UI.OutputToUser("You win! 🎉");
-                else
-                    UI.OutputToUser("Computer wins! 🤖");
-                break;
-            }
+            Logic.CheckWin(currentPlayer, board, gridSize);
 
             // Check if board is full (tie game)
             if (Logic.IsBoardFull(gridSize, board))
@@ -57,7 +46,7 @@ public static class Program
             }
 
             // Switch to the other player
-            currentPlayer = (currentPlayer == Constants.X_Symbol) ? Constants.O_Symbol : Constants.X_Symbol;
+            currentPlayer = (currentPlayer == Constants.X_SYMBOL) ? Constants.O_SYMBOL : Constants.X_SYMBOL;
         }
 
         UI.OutputToUser("Press any key to exit...");

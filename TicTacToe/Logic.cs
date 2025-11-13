@@ -93,6 +93,18 @@ public static class Logic
         return false;
     }
 
+    public static void CheckWin(char currentPlayer, char[,] board, int gridSize)
+    {
+        if (CheckWinColumns(currentPlayer, board, gridSize) || CheckWinRows(currentPlayer, board, gridSize) || CheckWinDiagonalTopLeftToBottomRight(currentPlayer, board, gridSize) || CheckWinDiagonalTopRightToBottomLeft(currentPlayer, board, gridSize))
+        {
+            UI.DisplayBoard(gridSize, board);
+            if (currentPlayer == Constants.X_SYMBOL)
+                UI.OutputToUser("You win! 🎉");
+            else
+                UI.OutputToUser("Computer wins! 🤖");
+            
+        }
+    }
     // Method to check if board is full.
        public static bool IsBoardFull(int gridSize, char[,] board)
         {
@@ -100,7 +112,7 @@ public static class Logic
             {
                 for (int j = 0; j < gridSize; j++)
                 {
-                    if (board[i, j] != Constants.X_Symbol && board[i, j] != Constants.O_Symbol)
+                    if (board[i, j] != Constants.X_SYMBOL && board[i, j] != Constants.O_SYMBOL)
                         return false;
                 }
             }
@@ -113,13 +125,14 @@ public static class Logic
        {
            UI.OutputToUser("Enter grid size: ");
            if (int.TryParse(UI.TakeInput(), out int size) && size >= Constants.MIN_SIZE && size <= Constants.MAX_SIZE)
-           {
                return size;
-           }
-
            UI.OutputToUser("Invalid size. Using default size 3.");
+           UI.OutputToUser("Press any key to continue... ");
+           UI.ReadKey();
            
            return Constants.DEFAULT_SIZE;
+           
+           
 
 
        }

@@ -36,7 +36,14 @@ public static class Program
 
             // Check if someone won
             if (Logic.CheckWin(currentPlayer, board, gridSize))
+            {
+                UI.DisplayBoard(gridSize, board);
+                if (currentPlayer == Constants.X_SYMBOL)
+                    UI.OutputToUser("You win! 🎉");
+                else
+                    UI.OutputToUser("Computer wins! 🤖");
                 break;
+            }
 
             // Check if board is full (tie game)
             if (Logic.IsBoardFull(gridSize, board))

@@ -97,12 +97,7 @@ public static class Logic
     {
         if (CheckWinColumns(currentPlayer, board, gridSize) || CheckWinRows(currentPlayer, board, gridSize) || CheckWinDiagonalTopLeftToBottomRight(currentPlayer, board, gridSize) || CheckWinDiagonalTopRightToBottomLeft(currentPlayer, board, gridSize))
         {
-            if (currentPlayer == Constants.X_SYMBOL)
-                Console.WriteLine("You win! 🎉");
-            else
-                Console.WriteLine("Computer wins! 🤖");
             return true; // Return true when someone wins
-
         }
 
         return false; // Return false when no on has won yet.

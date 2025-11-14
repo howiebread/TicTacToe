@@ -97,11 +97,10 @@ public static class Logic
     {
         if (CheckWinColumns(currentPlayer, board, gridSize) || CheckWinRows(currentPlayer, board, gridSize) || CheckWinDiagonalTopLeftToBottomRight(currentPlayer, board, gridSize) || CheckWinDiagonalTopRightToBottomLeft(currentPlayer, board, gridSize))
         {
-            UI.DisplayBoard(gridSize, board);
             if (currentPlayer == Constants.X_SYMBOL)
-                UI.OutputToUser("You win! 🎉");
+                Console.WriteLine("You win! 🎉");
             else
-                UI.OutputToUser("Computer wins! 🤖");
+                Console.WriteLine("Computer wins! 🤖");
             return true; // Return true when someone wins
 
         }
@@ -119,24 +118,20 @@ public static class Logic
                         return false;
                 }
             }
-
             return true;
         }
 
        // Method to get grid size from user input.
        public static int GetGridSize()
        {
-           UI.OutputToUser("Enter grid size: ");
-           if (int.TryParse(UI.TakeInput(), out int size) && size >= Constants.MIN_SIZE && size <= Constants.MAX_SIZE)
+           Console.WriteLine("Enter grid size: ");
+           if (int.TryParse(Console.ReadLine(), out int size) && size >= Constants.MIN_SIZE && size <= Constants.MAX_SIZE)
                return size;
-           UI.OutputToUser("Invalid size. Using default size 3.");
-           UI.OutputToUser("Press any key to continue... ");
-           UI.ReadKey();
+           Console.WriteLine("Invalid size. Using default size 3.");
+           Console.WriteLine("Press any key to continue... ");
+           Console.ReadKey();
            
            return Constants.DEFAULT_SIZE;
            
-           
-
-
        }
 }
